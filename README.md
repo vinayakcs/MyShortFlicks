@@ -31,4 +31,4 @@ Vinayak srinivas [Linkedin](https://linkedin.com/in/vinayakcs)
 Creative Commons Attribution (CC BY)
 
 ### App
-![Screenshot]()
+![Screenshot](https://github.com/vinayakcs/MyShortFlicks/blob/main/Screenshot.png?raw=true)
