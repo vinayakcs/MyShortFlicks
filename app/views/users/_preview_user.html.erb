@@ -1,0 +1,52 @@
+
+
+<div class="user_preview row">
+
+ <div class="row-same-height row-full-height">
+
+<div class="user_preview_image col-md-height col-full-height col-md-5">
+<%= link_to image_tag(user.profile_image_url,:class=>"img-responsive"),:id=>user, :controller => :users, :action => :show %>
+
+</div><!--user_preview_image-->
+
+<div class="user_preview_body  col-md-height col-full-height col-md-7">
+<ul class="list-inline">
+
+<li>
+<div class="user_preview_title">
+<%#find helper in layout helper%>
+<%=link_to truncate_preview_title(user.first_name+" "+user.last_name),:id=>user, :controller => :users, :action => :show%>&nbsp;&nbsp;&nbsp;
+
+</div><!--user_preview_title-->
+</li>
+
+<li>
+<div class="user_preview_reputation">
+<img src="/assets/karma.png"/> &nbsp;<%=user.karma%>
+</div><!--user_preview_reputation-->
+</li>
+
+<li>
+<div class="user_preview_views">
+<i class="fa fa-eye"></i>&nbsp;<%=user.impressions_count%>
+</div><!--user_preview_views-->
+</li>
+
+
+</ul>
+
+<div class="user_preview_description">
+<%#find helper in layout helper%>
+<%=truncate_preview_description(user.bio)%>
+</div><!--user_preview_description-->
+
+
+</div><!--user_preview_body-->
+
+
+</div><!--row-same-height-->
+
+
+</div><!--user_preview-->
+
+<div style="clear:both"></div><br>

@@ -1,0 +1,11 @@
+var utils=msf_utils();
+<% for video in @videos %>
+$('#video_preview_container').append("<%=  escape_javascript render :partial => 'videos/preview_video', :locals => {:video => video} %>");
+<%end%>
+<% if @isLastResults==true %>
+$('#video_preview_container').after("<%= escape_javascript render :partial => 'shared/noresult' %>");
+$('#load_more_link').remove();
+<%else%> 
+var oldUrl=$('#load_more_link').attr('href');
+$('#load_more_link').attr('href',utils.setLoadMoreParam(oldUrl));
+<%end%>

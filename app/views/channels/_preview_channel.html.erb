@@ -1,0 +1,56 @@
+
+
+<div class="channel_preview row">
+ <div class="row-same-height row-full-height">
+
+<div class="channel_preview_image col-md-height col-full-height col-md-5">
+<%= link_to image_tag(channel.image_url,:class=>"img-responsive"),:id=>channel, :controller => :channels, :action => :show %>
+
+
+</div><!--channel_preview_image-->
+
+<div class="channel_preview_body  col-md-height col-full-height col-md-7">
+<ul class="list-inline">
+
+<li>
+<div class="channel_preview_title">
+<%#find helper in layout helper%>
+<%=link_to truncate_preview_title(channel.title),:id=>channel, :controller => :channels, :action => :show%>&nbsp;&nbsp;&nbsp;
+
+</div><!--channel_preview_title-->
+</li>
+
+<li>
+<div class="channel_preview_subscribers">
+<i class="fa fa-users"></i>&nbsp;<%=channel.subscriptions_count%>
+</div><!--channel_preview_subscribers-->
+</li>
+
+<li>
+<div class="channel_preview_video_count">
+<i class="fa fa-video-camera"></i>&nbsp;<%=channel.videos_count%>
+</div><!--channel_preview_video_count-->
+</li>
+
+</ul>
+
+<div class="channel_preview_description">
+<%#find helper in layout helper%>
+<%=truncate_preview_description(channel.description)%>
+</div><!--channel_preview_description-->
+
+<div class="channel_preview_footer">
+
+<div class="channel_preview_curator">
+Curator: <%=channel.user.first_name%>
+</div><!--channel_preview_curator-->
+
+</div><!--channel_preview_footer-->
+
+</div><!--channel preview body-->
+
+ </div><!--row-same-height-->
+
+</div><!--channel preview-->
+
+<div style="clear:both"></div><br>

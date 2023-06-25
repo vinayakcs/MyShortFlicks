@@ -1,0 +1,71 @@
+var msf_utils=function(){
+<%url_help=Rails.application.routes.url_helpers%>
+<%#the placeholder mapper%>
+var SEARCH_OPTIONS={
+  "film":"film",
+  "channel":"channel",
+  "user":"user"
+};
+<%#placeholder mapper%>
+var SEARCH_OPTIONS_PLACEHOLDER={};
+SEARCH_OPTIONS_PLACEHOLDER[SEARCH_OPTIONS.film]="Search Films";
+SEARCH_OPTIONS_PLACEHOLDER[SEARCH_OPTIONS.channel]="Search Channels";
+SEARCH_OPTIONS_PLACEHOLDER[SEARCH_OPTIONS.user]="Search Users";
+<%#form action path mapper%>
+var SEARCH_FORM_PATH={};
+SEARCH_FORM_PATH[SEARCH_OPTIONS.film]="<%=url_help.videos_path%>";
+SEARCH_FORM_PATH[SEARCH_OPTIONS.channel]="<%=url_help.channels_path%>";
+SEARCH_FORM_PATH[SEARCH_OPTIONS.user]= "<%=url_help.users_path%>";
+
+
+<%# loadmore utilities%>
+var insertParam=function (url,key, value)
+{
+    key = encodeURI(key); value = encodeURI(value);
+
+    var kvp = url.substr(1).split('&');
+
+    var i=kvp.length; var x; while(i--) 
+    {
+        x = kvp[i].split('=');
+
+        if (x[0]==key)
+        {
+            x[1] = value;
+            kvp[i] = x.join('=');
+            break;
+        }
+    }
+
+    if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+    
+    return kvp.join('&'); 
+},
+setLoadMoreParam=function(urlPath){
+ var  page="page=";
+ 
+if(urlPath.indexOf("page=")>0){
+ var oldPageVal=urlPath.split("page=")[1][0];
+ urlPath=insertParam(urlPath,"page",parseInt(oldPageVal)+1);
+}else if(urlPath==""){
+ page=page+"2";
+ urlPath+=page;
+}else{
+ page="&"+page+"2";
+ urlPath+=page;
+}
+ if(urlPath.indexOf('?')>=0)
+  return urlPath;
+ else
+  return "?"+urlPath;
+
+}
+return {
+  "SEARCH_OPTIONS":SEARCH_OPTIONS,
+  "SEARCH_OPTIONS_PLACEHOLDER":SEARCH_OPTIONS_PLACEHOLDER,
+  "SEARCH_FORM_PATH":SEARCH_FORM_PATH,
+  "setLoadMoreParam":setLoadMoreParam
+};
+
+};

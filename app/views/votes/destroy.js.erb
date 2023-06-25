@@ -1,0 +1,9 @@
+
+<% if @vote_deleted == true %>
+$('#vote_error_message').text('');
+$('#vote_count').text("<%=pluralize(@new_vote_count, 'vote') %>");
+<%else%>
+
+$('#vote_error_message').text('Technical error, unable to savve vote');
+
+<%end%>

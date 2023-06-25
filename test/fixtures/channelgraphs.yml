@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: channelgraphs
+#
+#  id         :integer          not null, primary key
+#  video_id   :integer
+#  channel_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  channel_id: 1
+  video_id: 1
+
+two:
+  channel_id: 1
+  video_id: 1

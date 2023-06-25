@@ -1,0 +1,65 @@
+
+
+<div class="video_preview row">
+
+ <div class="row-same-height row-full-height">
+
+<div class="video_preview_image  col-xs-12 col-sm-5 col-lg-5 col-md-5">
+<%= link_to image_tag(video.video_thumbnail_url,:class=>"img-responsive"),:id=>video, :controller => :videos, :action => :show %>
+</div><!--video_preview_image-->
+<div class="video_preview_body   col-xs-12 col-sm-7 col-lg-7 col-md-5">
+
+<ul class="list-inline">
+
+<li>
+<div class="video_preview_title">
+<%#find helper in layout helper%>
+<%=link_to truncate_preview_title(video.title),:id=>video, :controller => :videos, :action => :show%>&nbsp;&nbsp;&nbsp;
+</div><!--video_preview_title-->
+</li>
+
+<li>
+<div class="video_preview_reputation">
+<img src="/assets/popcorn.png"/>&nbsp;<%=video.reputation%>
+</div><!--video_preview_reputation-->
+</li>
+
+<li>
+<div class="video_preview_views">
+<i class="fa fa-eye"></i>&nbsp;<%=video.impressions_count%>
+</div><!--video_preview_views-->
+</li>
+
+<%if video.is_nsfw==true%>
+<li>
+<div class="video_preview_nsfw">
+<img src="/assets/nsfw.png"/>
+</div><!--video_preview_nsfw-->
+</li>
+<%end%>
+</ul>
+
+<div class="video_preview_description">
+<%#find helper in layout helper%>
+<%=truncate_preview_description(video.description)%>
+</div><!--video_preview_description-->
+
+<div class="video_preview_footer">
+
+<div class="video_preview_genres">
+<%#icons=video.get_top_icons_of_type("genre",4)%>
+<%#icons.each do |icon| %>
+<%#end%>
+Genre:Animated,Comedy,Horror,Thriller
+</div><!--video_preview_genres-->
+
+</div><!--video_preview_footer-->
+</div><!--video_preview_body-->
+
+
+</div><!--row-same-height-->
+
+
+</div><!--video_preview-->
+
+<div style="clear:both"></div><br>

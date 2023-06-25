@@ -1,0 +1,17 @@
+<%# keeping "" defaults to sitename %>
+<%= title "" %>
+
+<%= render :partial => 'shared/meta', :locals => {:isHome => true, :page=> nil} %>
+
+<div id="video_preview_container">
+<% if @videos.nil? || @videos.empty? %>
+<%= render :partial => 'shared/noresult' %>
+<%else%>
+<% for video in @videos %>
+<%= render :partial => 'videos/preview_video', :locals => {:video => video} %>
+<%end%>
+<%end%>
+</div>
+<% if !@videos.nil? && !@videos.empty? %>
+<%= render :partial => 'shared/loadmore'%>
+<%end%>

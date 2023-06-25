@@ -1,0 +1,7 @@
+<% if @comment_deleted == true %>
+$('#comments_count').text("<%=pluralize(@new_comment_count, 'comment') %>");
+$('#comment_<%=@comment.id%>').fadeOut("slow");
+$('#comment_<%=@comment.id%>').remove();
+<%else%>
+$('#comment_error_message').text('Technical error, unable to delete comment');
+<%end%>

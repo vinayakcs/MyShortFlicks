@@ -1,0 +1,28 @@
+<%= title @video.title %>
+<%#@video.inspect %>
+
+<div id="video_page">
+<div id="video_title">
+<%=@video.title%>
+</div><!--video_title-->
+<div id="video">
+<div class="embed-responsive embed-responsive-4by3">
+<%= render_video_based_on_host(@video)%>
+</div>
+<div id="video_first_layer">
+
+<div id="video_social_bar">
+<div class="social social_link">
+<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=<%=video_url(@video)%>"><i class="fa fa-lg fa-facebook"></i></a>
+</div>
+<div class="social social_link">
+<a target="_blank" href="http://twitter.com/share?text=MyShortFlicks+the+home+of+short+films&url=<%=video_url(@video)%>&hashtags=myshortflicks"><i class="fa fa-lg fa-twitter"></i></a>
+</div>
+<div class="social social_link">
+<a target="_blank" href="https://plus.google.com/share?url=<%=video_url(@video)%>"><i class="fa fa-lg fa-google-plus"></i></a>
+</div>
+</div>
+</div><!--video_first_layer-->
+</div><!--video-->
+
+</div><!--video_page-->

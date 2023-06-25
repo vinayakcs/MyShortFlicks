@@ -1,0 +1,11 @@
+
+<%= form_for [commentable, Comment.new], remote:true do |form| %>
+  <ol class="formList">
+    <li>
+      <%= form.label :description %>
+      <%= form.text_area :description, :rows => 5, :class=>("auth_pop" unless check_auth_user?) %>
+
+    </li>
+    <li><%= submit_tag "Add comment", :class=>("auth_pop" unless check_auth_user?) %></li>
+  </ol>
+<% end %>

@@ -1,0 +1,10 @@
+$("#comment_<%=@comment.id%> > #comment_edit").hide();
+<% if @comment_updated == true %>
+
+$('#comment_<%=@comment.id%> > #comment_description').text('<%=@comment.description%>').hide.fadeIn("slow");
+
+<%else%>
+
+$('#comment_error_message').text('Technical error, unable to edit comment');
+
+<%end%>

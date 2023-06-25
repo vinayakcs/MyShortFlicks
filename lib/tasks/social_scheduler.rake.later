@@ -1,0 +1,40 @@
+require 'twitter'
+include ActionView::Helpers::TextHelper
+
+desc "tweet todays featured video"
+task :tweet_featuered_video => :environment do
+
+ twitterClient = Twitter::Client.new 
+ twitterClient.consumer_key=''
+ twitterClient.consumer_secret=''
+ twitterClient.oauth_token=''
+ twitterClient.oauth_token_secret=''
+ Rails.logger.info "tweeting..."
+ #@videos=Video.featureds.get_todays_videos
+ @video=Video.find(16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)
+ @videos.each do |video|
+  tweet_name=truncate(video.name, :length=>50)
+  tweet_desc=truncate(video.descriptions, :length=>50)
+  tweet_link=video.get_video_link
+  twitterClient.update(tweet_name+"\n\n"+tweet_desc+"\n\n"+tweet_link)
+  Rails.logger.info "tweeted"+tweet_name+"\n\n"+tweet_desc+"\n\n"+tweet_link
+ end 
+# 
+
+end
+
+#https://www.rocketmarketinginc.com/blog/get-never-expiring-facebook-page-access-token/
+desc "post todays videos to facebook"
+task :facebook_post_featured_video => :environment do
+ @video_graph = Koala::Facebook::API.new("")
+ Rails.logger.info "tweeting..."
+ #@videos=Video.featureds.get_todays_videos
+ @videos=Video.find(16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)
+ @videos.each do |project|
+  message=video.name+"\n\n"+video.descriptions
+  @video_graph.put_connections('', 'feed', :message => message, :picture => video.image, :link => video.get_video_link)
+  Rails.logger.info "fb post"+message
+ end
+
+end
+ 

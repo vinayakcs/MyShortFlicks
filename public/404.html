@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="main.css" rel="stylesheet">
+        <script src="jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="jquery.backgroundposition.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function(){
+              $('#midground').css({backgroundPosition: '0px 0px'});
+              $('#foreground').css({backgroundPosition: '0px 0px'});
+              $('#background').css({backgroundPosition: '0px 0px'});
+                $('#midground').animate({
+                    backgroundPosition:"(0px 20000px)"
+                }, 240000, 'linear');
+                $('#foreground').animate({
+                    backgroundPosition:"(0px 20000px)"
+                }, 120000, 'linear');
+                $('#background').animate({
+                    backgroundPosition:"(0px 20000px)"
+                }, 480000, 'linear');
+            });
+        </script>
+    </head>
+    <body>
+        <script language="Javascript">
+        var tl=new Array(
+                "No file was found ",
+                'Sigh.....',
+                "A rather depressing thing , to find no resource",
+                "Makes me think what a mundane and wasteful life i live",
+                "As my obscure variables vehemently try to serve your every needs ..",
+                "oblivious of the fact that they may live a few more seconds,until you surf away from this page",
+                "Come to think of it, i can process a million thoughts in a second ",
+                "and here i am with a brain the size of the planet , rendering lousy pages such as this",
+                "O what life, leave me alone , i shall purge my variables lest they perceive their existence"
+        );
+        var speed=60;
+        var index=0; text_pos=0;
+        var str_length=tl[0].length;
+        var contents, row;
+        function type_text()
+        {
+            contents='';
+            row=Math.max(0,index-7);
+            while(row<index)
+                contents += tl[row++] + '\r\n';
+            document.forms[0].elements[0].value = contents + tl[index].substring(0,text_pos) + "_";
+            if(text_pos++==str_length)
+            {
+                text_pos=0;
+                index++;
+                if(index!=tl.length)
+                {
+                    str_length=tl[index].length;
+                    setTimeout("type_text()",1500);
+                }
+            } else
+                setTimeout("type_text()",speed);
+        }
+        window.onload = function(){
+            type_text();
+        }
+        </script>
+        <div id="background"></div>
+        <div id="midground"></div>
+        <div id="foreground"></div>
+        <div id="page-wrap">
+            <div class="container">
+                <div class="container main">
+                    <audio autoplay="autoplay" src="grief.mp3">
+                        <p>If you are reading this, it is because your browser does not support the audio element.     </p>
+                    </audio>
+                    <header class="page-header">
+                        <h1>404 - File not found</h1>
+                    </header>
+                    <p>
+                    <form>
+                        <textarea readonly></textarea>
+                    </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

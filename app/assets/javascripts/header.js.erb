@@ -1,0 +1,72 @@
+var header_js= function(){
+
+
+var utils=msf_utils(),
+<%#the placeholder mapper%>
+ SEARCH_OPTIONS=utils.SEARCH_OPTIONS,
+<%#placeholder mapper%>
+ SEARCH_OPTIONS_PLACEHOLDER=utils.SEARCH_OPTIONS_PLACEHOLDER,
+<%#form action path mapper%>
+ SEARCH_FORM_PATH=utils.SEARCH_FORM_PATH,
+ update_search_placeholder=function(placeHolderText){
+$('#header_search_text').attr('placeholder',placeHolderText);
+},
+change_search_option=function(option){
+$("#header_selected_search_opter").html($('.search_options_select[value="'+option+'"]').find("i").clone().removeClass("search_options_select"));
+update_search_placeholder(SEARCH_OPTIONS_PLACEHOLDER[option]);
+$('#header_search_form').attr('action',SEARCH_FORM_PATH[option]);
+}, 
+<%#user search option change listener%>
+ header_search_opter=function(){
+$(".search_options_select" ).on( "click", function() {
+var searchOption=$(this).attr('value');
+/*$("#header_selected_search_opter").html($(this).find("i").clone().removeClass("search_options_select"));
+update_search_placeholder(SEARCH_OPTIONS_PLACEHOLDER[searchOption]);
+$('#header_search_form').attr('action',SEARCH_FORM_PATH[searchOption]);
+*/
+change_search_option(searchOption);
+});
+
+},
+ search_icon_click_listener=function(){
+$('#search_submit').on('click',function(){
+$('#header_search_form').submit();
+});
+
+},
+getParameterByName=function (name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+},
+<%#after search, which causes page reload, observe the pathname and reselect the search option%>
+init_search_load_by_url_observation=function(){
+<%#search option is changed based on pathname in url%>
+var pathname=window.location.pathname;
+if(pathname===SEARCH_FORM_PATH.channel){
+change_search_option(SEARCH_OPTIONS.channel);
+}else if(pathname===SEARCH_FORM_PATH.user){
+change_search_option(SEARCH_OPTIONS.user);
+}
+else{
+change_search_option(SEARCH_OPTIONS.film);
+}
+<%#search box, prefilled with previous search%>
+var searchQuery=getParameterByName("header_search_text");
+$("#header_search_text").val(searchQuery);
+},
+
+init=function(){
+init_search_load_by_url_observation();
+header_search_opter();
+search_icon_click_listener();
+};
+
+init();
+
+
+};
+$(document).ready(header_js);
+$(document).on('page:load', header_js);
+

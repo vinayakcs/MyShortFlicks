@@ -1,0 +1,15 @@
+<%# keeping "" defaults to sitename %>
+<%= title "" %>
+
+
+<%= render :partial => 'shared/meta', :locals => {:isHome => true, :page=> nil} %>
+
+<div id="user_preview_container">
+<% if @users.nil? || @users.empty? %>
+<%= render :partial => 'shared/noresult' %>
+<%else%>
+<% for user in @users %>
+<%= render :partial => 'users/preview_user', :locals => {:user => user} %>
+<%end%>
+<%end%>
+</div>

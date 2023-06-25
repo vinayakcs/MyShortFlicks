@@ -1,0 +1,18 @@
+<div id="comment_error_message">
+</div>
+<div id="comments_list">
+<div id ="comments_count">
+<%if commentts.size == 0%>
+Be the First to comment
+<%else%> 
+<%=pluralize(commentts.size, 'Comment')%>
+<%end%>
+</div>
+<%= render :partial => "/comments/new_comment", :locals => {:commentable => parent} %>
+<div id="comment_content">
+<%commentts.recent.each do |c|%>
+<%=render :partial => "/comments/comment",:locals => {:comment=>c, :commentable => parent}%>
+<%end%>
+</div> <%#"comment_content" %>
+</div> <%#"comment_list" %>
+

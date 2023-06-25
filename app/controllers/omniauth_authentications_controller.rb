@@ -1,0 +1,2 @@
+class OmniauthAuthenticationsController < ApplicationController
+end

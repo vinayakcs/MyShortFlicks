@@ -1,0 +1,20 @@
+var header_discover_js= function(){
+
+
+
+var discover_bar_hover_listener=function(){
+
+$('.discover_bar>li').hover(function(){
+$(this).find('.discover_options').fadeIn(150);
+},function(){
+$(this).find('.discover_options').fadeOut(150);
+});
+
+}
+init=function(){
+discover_bar_hover_listener();
+};
+init();
+};
+$(document).ready(header_discover_js);
+$(document).on('page:load',header_discover_js );

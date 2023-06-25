@@ -1,0 +1,13 @@
+<% if @comment_saved==true%>
+$('#comment_error_message').text('');
+$('#comments_count').text("<%=pluralize(@new_comment_count, 'comment') %>");
+//add new comment
+$('#comment_content').prepend("<%=escape_javascript(render :partial => '/comments/comment',:locals => {:comment=>@comment, :commentable=>@commentable})%>");
+$('#comment_<%=@comment.id%>').hide().fadeIn("slow");
+//clear comment text_area
+$('#comment_description').val('');
+
+<%else%>
+//show error message
+$('#comment_error_message').text('Sorry technical error, comment not saved');
+<%end%>

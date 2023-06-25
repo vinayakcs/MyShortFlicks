@@ -1,0 +1,91 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<% if isHome ==true && page.nil?  %>
+<% content_for :head do %>
+         <meta name="description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+         <meta name="keywords" content="free shortfilms, short films online,best short films,top short films,short films,shortfilms,videos,horror,comedy,thriller,anime,animation,short movies,small movies,short film india,short film hindi,short film telugu" />
+	 <meta property="og:title" content="MyShortFlicks"/>	
+	 <meta property="og:url" content="https://www.myshortflicks.com"/>	
+	 <meta property="og:image" content="http://www.myshortflicks.com/images/msf_meta_image.jpg"/>
+	 <meta property="og:description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+
+	<meta name="author" content="" />
+	<meta name="copyright" content="" />
+	<meta name="application-name" content="My Short Flicks" />
+	<meta name="description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+	<meta name="keywords" content="free shortfilms, short films online,best short films,top short films,short films,shortfilms,videos,horror,comedy,thriller,anime,animation,short movies,small movies,short film india,short film hindi,short film telugu" />
+
+
+         <meta name="twitter:card" content="summary" />
+         <meta name="twitter:site" content="@MyShortFlicks" />
+         <meta name="twitter:title" content="MyshortFlicks" />
+         <meta name="twitter:description" content="Login to My Short Flicks and access india's largest collection of short films, join and participate in competitions and meet like minded movie addicts @myshortflicks" />
+         <meta name="twitter:image" content="http://www.myshortflicks.com/images/msf_meta_image.jpg" />
+         <meta name="twitter:url" content="https://www.myshortflicks.com" />
+
+
+<% end %> 
+<% elsif isHome ==false && !page.nil? && page.instance_of?(Video)%>
+
+<% content_for :head do %>
+	 <meta property="og:title" content="<%=page.title%>"/>	
+	 <meta property="og:url" content="<%='#TODO'%>"/>	
+	 <meta property="og:image" content="<%=page.video_thumbnail_url%>"/>
+	 <meta property="og:description" content="<%=page.description%>" />
+
+	<meta name="author" content="<%=page.title%>" />
+	<meta name="copyright" content="" />
+	<meta name="application-name" content="My Short Flicks" />
+	<meta name="description" content="<%=page.description%>" />
+	<meta name="keywords" content="<%=page.title%>" />
+
+         <meta name="twitter:card" content="summary" />
+         <meta name="twitter:site" content="@MyShortFlicks" />
+         <meta name="twitter:title" content="<%=page.title%>" />
+         <meta name="twitter:description" content="<%=page.description%>" />
+         <meta name="twitter:image" content="<%=page.video_thumbnail_url%>" />
+         <meta name="twitter:url" content="<%='#TODO'%>" />
+
+<% end %> 
+<%elsif isHome ==false && !page.nil? && page.instance_of?(User)%>
+<% content_for :head do %>
+	 <meta property="og:title" content="<%=page.first_name+" "+page.last_name%>"/>	
+	 <meta property="og:url" content="<%='#TODO'%>"/>	
+	 <meta property="og:image" content="<%=page.profile_image_url%>"/>
+	 <meta property="og:description" content="<%=page.bio%>" />
+
+	<meta name="author" content="<%=page.first_name+" "+page.last_name%>" />
+	<meta name="copyright" content="" />
+	<meta name="application-name" content="My Short Flicks" />
+	<meta name="description" content="<%=page.bio%>" />
+	<meta name="keywords" content="<%=page.first_name+" "+page.last_name%>" />
+
+         <meta name="twitter:card" content="summary" />
+         <meta name="twitter:site" content="@MyShortFlicks" />
+         <meta name="twitter:title" content="<%=page.first_name+" "+page.last_name%>" />
+         <meta name="twitter:description" content="<%=page.bio%>" />
+         <meta name="twitter:image" content="<%=page.profile_image_url%>" />
+         <meta name="twitter:url" content="<%='#TODO'%>" />
+
+<% end %> 
+<%elsif isHome ==false && !page.nil? && page.instance_of?(Channel)%>
+<% content_for :head do %>
+	 <meta property="og:title" content="<%=page.title%>"/>	
+	 <meta property="og:url" content="<%='#TODO'%>"/>	
+	 <meta property="og:image" content="<%=page.image_url%>"/>
+	 <meta property="og:description" content="<%=page.description%>" />
+
+	<meta name="author" content="<%=page.title%>" />
+	<meta name="copyright" content="" />
+	<meta name="application-name" content="My Short Flicks" />
+	<meta name="description" content="<%=page.description%>" />
+	<meta name="keywords" content="<%=page.title%>" />
+
+         <meta name="twitter:card" content="summary" />
+         <meta name="twitter:site" content="@MyShortFlicks" />
+         <meta name="twitter:title" content="<%=page.title%>" />
+         <meta name="twitter:description" content="<%=page.description%>" />
+         <meta name="twitter:image" content="<%=page.image_url%>" />
+         <meta name="twitter:url" content="<%='#TODO'%>" />
+
+<% end %> 
+<%end%>

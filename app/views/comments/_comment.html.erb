@@ -1,0 +1,31 @@
+<div id="comment_<%=comment.id%>">
+
+<%#user preview partial here%>#TODO
+
+<div id="comment_description">
+<%=escape_javascript comment.content%>
+</div>
+<div id="comment_time">
+<%=time_ago_in_words(comment.updated_at)%> ago
+</div>
+<% if my_current_user?(comment.user_id) %>
+
+<div class="comment_edit_icon">
+Edit
+</div>
+<div id="comment_edit" style="display:none" >
+<%=form_for([commentable,comment],remote:true) do |f|%>
+<%=f.text_area :description, :rows => 5 %>
+<%=f.submit "Update"%>
+<%end%>
+</div>
+
+<div id="comment_delete">
+<%=form_for([commentable,comment],html:{method: :delete, data: {confirm: "sure?"}}, remote: true) do |f| %>
+<%= f.submit "Delete" %>
+<%end%>
+</div>
+
+
+<%end%>
+</div>

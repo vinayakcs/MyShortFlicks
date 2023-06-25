@@ -1,0 +1,16 @@
+<%# keeping "" defaults to sitename %>
+<%= title "" %>
+
+<%= render :partial => 'shared/meta', :locals => {:isHome => true, :page=> nil} %>
+<div id="channel_preview_container">
+<% if @channels.nil? || @channels.empty? %>
+<%= render :partial => 'shared/noresult' %>
+<%else%>
+<% for channel in @channels %>
+<%= render :partial => 'channels/preview_channel', :locals => {:channel => channel} %>
+<%end%>
+<%end%>
+</div>
+<% if !@channels.nil? && !@channels.empty? %>
+<%= render :partial => 'shared/loadmore'%>
+<%end%>

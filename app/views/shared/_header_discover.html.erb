@@ -1,0 +1,99 @@
+
+
+<ul class="list-inline discover_bar">
+  <li value="featured"><%= link_to "Featured", videos_path(:filter => "featured") %>
+  </li>
+  <li value="feeds" style="display:none;">Feeds
+  </li>
+  <li value="video">Videos<span class="caret"></span>
+<div id="video_option" class="discover_options">
+<ul class="list-inline">
+
+<li><%= link_to videos_path(:filter => "hottest_video") do %>
+<div class="discover_option_choice">
+<i class="fa fa-fire fa-4x"></i>
+<div id="subtext">Hottest</div>
+</div>  
+<% end %></li>
+<li><%= link_to videos_path(:filter => "top_rated_video") do %>
+<div class="discover_option_choice">
+<i class="fa fa-star fa-4x"></i>
+<div id="subtext">Top Rated</div>
+</div>  
+<% end %></li>
+<li><%= link_to videos_path(:filter => "most_viewed_video") do %>
+<div class="discover_option_choice">
+<i class="fa fa-eye fa-4x"></i>
+<div id="subtext">Most Viewed</div>
+</div> 
+<% end %></li>
+<li><%= link_to videos_path(:filter => "new_video") do %>
+<div class="discover_option_choice">
+<i class="fa fa-clock-o fa-4x"></i>
+<div id="subtext">Recent</div>
+</div> 
+<% end %></li>
+
+</ul>
+</div>
+</li>
+
+
+
+<li value="category">Categories<span class="caret"></span>
+<div id="category_option" class="discover_options">
+<ul class="list-inline">
+
+<% categories=get_category_list%>
+<% categories.each do |category| %>
+
+<li><%= link_to videos_path(:filter => "category_video",:category_id=>category.id) do %>
+<div class="discover_option_choice">
+<img src="<%=category.icon_url%>" />
+<div id="subtext"><%=category.name%></div>
+</div>  
+<% end %></li>
+
+<%end%>
+
+</ul>
+</div>
+</li>
+
+  <li value="channel">Channels<span class="caret"></span>
+<div id="channel_option" class="discover_options">
+<ul class="list-inline">
+<li><%= link_to channels_path(:filter => "hottest_channel") do %>
+<div class="discover_option_choice">
+<i class="fa fa-fire fa-4x"></i>
+<div id="subtext">Hottest</div>
+</div>  
+<% end %></li>
+<li><%= link_to channels_path(:filter => "most_subscribed_channels") do %>
+<div class="discover_option_choice">
+<i class="fa fa-rss fa-4x"></i>
+<div id="subtext">Most Subscribed</div>
+</div>  
+<% end %></li>
+<li><%= link_to channels_path(:filter => "new_channel") do %>
+<div class="discover_option_choice">
+<i class="fa fa-clock-o fa-4x"></i>
+<div id="subtext">Recent</div>
+</div>  
+<% end %></li>
+</ul>
+</div>
+
+
+
+</li>
+
+
+
+</ul>
+
+
+
+
+
+
